@@ -3,6 +3,8 @@ import { ModelInfo, TokenUsageItem } from '@refly-packages/openapi-schema';
 export enum LLMType {
   GPT4oMini = 'openai/gpt-4o-mini',
   GPT4o = 'openai/gpt-4o',
+  // DeepSeekV3 = 'deepseek-chat',
+  DeepSeekV3 = 'deepseek-ai/DeepSeek-V2.5',
   Claude35Sonnet = 'anthropic/claude-3.5-sonnet',
   Claude3Haiku = 'anthropic/claude-3-haiku',
   GeminiFlash15 = 'google/gemini-flash-1.5',
@@ -10,6 +12,18 @@ export enum LLMType {
 }
 
 export const modelMap: Record<string, ModelInfo> = {
+  [LLMType.DeepSeekV3]: {
+    name: LLMType.DeepSeekV3,
+    label: 'deepseek-ai/DeepSeek-V2.5',
+    provider: 'deepseek',
+    tier: 't1',
+    contextLimit: 128000,
+    maxOutput: 16384,
+    capabilities: {
+      functionCall: true,
+    },
+  },
+
   [LLMType.GPT4o]: {
     name: LLMType.GPT4o,
     label: 'GPT-4o',
@@ -22,6 +36,7 @@ export const modelMap: Record<string, ModelInfo> = {
       vision: true,
     },
   },
+
   [LLMType.GPT4oMini]: {
     name: LLMType.GPT4oMini,
     label: 'GPT-4o Mini',

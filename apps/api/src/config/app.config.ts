@@ -120,6 +120,7 @@ export default () => ({
   credentials: {
     openai: process.env.OPENAI_API_KEY,
     jina: process.env.JINA_API_KEY,
+    siliconflow: process.env.SILICONFLOW_API_KEY,
     fireworks: process.env.FIREWORKS_API_KEY,
     serper: process.env.SERPER_API_KEY,
   },

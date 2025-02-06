@@ -160,9 +160,9 @@ export class SkillEngine {
   chatModel(params?: Partial<OpenAIChatInput>): ChatOpenAI {
     return new ChatOpenAI({
       model: this.config?.configurable?.modelInfo?.name || this.options.defaultModel,
-      apiKey: process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY,
+      apiKey: process.env.MY_API_KEY || process.env.OPENAI_API_KEY,
       configuration: {
-        baseURL: process.env.OPENROUTER_API_KEY && 'https://openrouter.ai/api/v1',
+        baseURL: process.env.MY_API_KEY && process.env.MY_BASE_URL,
         defaultHeaders: {
           'HTTP-Referer': 'https://refly.ai',
           'X-Title': 'Refly',

@@ -15,6 +15,7 @@ import { QdrantService } from '@/common/qdrant.service';
 import { Condition, PointStruct } from '@/common/qdrant.dto';
 import { genResourceUuid } from '@/utils';
 import { JinaEmbeddings } from '@/utils/embeddings/jina';
+import { SiliconFlowEmbeddings } from '@/utils/embeddings/siliconflow';
 
 const READER_URL = 'https://r.jina.ai/';
 
@@ -49,6 +50,14 @@ export class RAGService {
         batchSize: this.config.getOrThrow('embeddings.batchSize'),
         dimensions: this.config.getOrThrow('embeddings.dimensions'),
         apiKey: this.config.getOrThrow('credentials.jina'),
+        maxRetries: 3,
+      });
+    } else if (provider === 'siliconflow') {
+      this.embeddings = new SiliconFlowEmbeddings({
+        modelName: this.config.getOrThrow('embeddings.modelName'),
+        batchSize: this.config.getOrThrow('embeddings.batchSize'),
+        dimensions: this.config.getOrThrow('embeddings.dimensions'),
+        apiKey: this.config.getOrThrow('credentials.siliconflow'),
         maxRetries: 3,
       });
     } else if (provider === 'openai') {

@@ -40,7 +40,8 @@ import { QUEUE_CHECK_CANCELED_SUBSCRIPTIONS } from '@/utils/const';
 export class SubscriptionService implements OnModuleInit {
   private logger = new Logger(SubscriptionService.name);
 
-  private modelList: ModelInfoModel[];
+  // private modelList: ModelInfoModel[];
+  private modelList;
   private modelListSyncedAt: Date | null = null;
   private modelListPromise: Promise<ModelInfoModel[]> | null = null;
 
@@ -55,22 +56,28 @@ export class SubscriptionService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    let modelInfos = await this.prisma.modelInfo.findMany({
-      where: { enabled: true },
-    });
-    if (modelInfos.length === 0) {
-      modelInfos = await this.prisma.modelInfo.createManyAndReturn({
-        data: defaultModelList.map((m) => ({
-          ...m,
-          capabilities: JSON.stringify(m.capabilities),
-        })),
-      });
-      this.logger.log(`Model info created: ${modelInfos.map((m) => m.name).join(',')}`);
-    } else {
-      this.logger.log(`Model info already configured: ${modelInfos.map((m) => m.name).join(',')}`);
-    }
+    // let modelInfos = await this.prisma.modelInfo.findMany({
+    //   where: { enabled: true },
+    // });
+    // if (modelInfos.length === 0) {
+    //   modelInfos = await this.prisma.modelInfo.createManyAndReturn({
+    //     data: defaultModelList.map((m) => ({
+    //       ...m,
+    //       capabilities: JSON.stringify(m.capabilities),
+    //     })),
+    //   });
+    //   this.logger.log(`Model info created: ${modelInfos.map((m) => m.name).join(',')}`);
+    // } else {
+    //   this.logger.log(`Model info already configured: ${modelInfos.map((m) => m.name).join(',')}`);
+    // }
+    const a = {
+      data: defaultModelList.map((m) => ({
+        ...m,
+        capabilities: JSON.stringify(m.capabilities),
+      })),
+    };
 
-    this.modelList = modelInfos;
+    this.modelList = a.data;
     this.modelListSyncedAt = new Date();
 
     this.subscriptionPlans = await this.prisma.subscriptionPlan.findMany();
