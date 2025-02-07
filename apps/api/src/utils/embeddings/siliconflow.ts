@@ -32,7 +32,7 @@ export class SiliconFlowEmbeddings extends Embeddings {
     }
 
     // 存储所有批次的结果
-    let results = { data: [] };
+    let results = { data: [], usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 } };
 
     // 依次处理每个批次
     for (const batch of batches) {
