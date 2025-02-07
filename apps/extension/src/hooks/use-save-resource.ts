@@ -3,7 +3,12 @@ import { getMarkdown, getReadabilityMarkdown } from '@refly/utils/html2md';
 import getClient from '@refly-packages/ai-workspace-common/requests/proxiedRequest';
 import { getClientOrigin } from '@refly/utils/url';
 import { getRuntime } from '@refly/utils/env';
-import { ConnectionError } from '@refly/errors';
+import { ConnectionError, ContentTooLargeError, PayloadTooLargeError } from '@refly/errors';
+
+// Maximum content length (100k characters)
+const MAX_CONTENT_LENGTH = 100000;
+// Maximum payload size (100KB)
+const MAX_PAYLOAD_SIZE_BYTES = 100 * 1024;
 
 export const useSaveCurrentWeblinkAsResource = () => {
   const saveResource = async () => {
@@ -13,6 +18,17 @@ export const useSaveCurrentWeblinkAsResource = () => {
       const pageContent = isWeb
         ? getMarkdown(document?.body)
         : getReadabilityMarkdown(document?.body ? document?.body : document);
+
+      // Check content length
+      if (pageContent?.length > MAX_CONTENT_LENGTH) {
+        return {
+          url: '',
+          res: {
+            errCode: new ContentTooLargeError().code,
+          } as BaseResponse,
+        };
+      }
+
       const resource = {
         resourceId: 'tempResId',
         title: document?.title || '',
@@ -35,6 +51,17 @@ export const useSaveCurrentWeblinkAsResource = () => {
           content: resource?.content,
         },
       };
+
+      // Check payload size
+      const payloadSize = new Blob([JSON.stringify(createResourceData)]).size;
+      if (payloadSize > MAX_PAYLOAD_SIZE_BYTES) {
+        return {
+          url: '',
+          res: {
+            errCode: new PayloadTooLargeError().code,
+          } as BaseResponse,
+        };
+      }
 
       const { error } = await getClient().createResource(createResourceData);
       // const resourceId = data?.data?.resourceId;

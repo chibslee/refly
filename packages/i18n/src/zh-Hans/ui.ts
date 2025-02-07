@@ -123,8 +123,9 @@ const translations = {
       first: '由多线程对话、知识库集成、上下文记忆和智能搜索驱动，',
       second: 'Refly 是将创意转化为优质内容的最佳方式。',
     },
-    messageText: '全新推理模型 DeepSeek R1 上线！⚡️ ！',
+    messageText: 'Refly 网页剪存 Chrome 插件发布! ⚡️! ',
     tryForFree: '开始使用',
+    addToChrome: '添加到 Chrome',
     contactUs: '联系我们',
     watchVideo: '观看视频',
     joinBtn: '免费使用',
@@ -170,6 +171,16 @@ const translations = {
           'AI 编辑助手，确保专业输出质量',
         ],
       },
+      featureFive: {
+        tag: '剪存',
+        title: '一键剪存任意网页内容，持续打造第二大脑',
+        bulletPoints: [
+          '一键保存任意网页内容（Twitter、小红书、Notion 等）',
+          '支持私有网页内容剪存与整理',
+          '持续积累个人知识库',
+          '无缝集成到第二大脑',
+        ],
+      },
     },
     pricing: {
       title: '计划与定价',
@@ -206,6 +217,11 @@ const translations = {
         title: '联系我们',
         community: '社区',
         mail: '邮箱',
+      },
+      platforms: {
+        title: '平台',
+        chrome: 'Chrome 插件',
+        web: 'Web 应用',
       },
     },
     loginFailed: {
@@ -252,6 +268,7 @@ const translations = {
       price: '价格',
       docs: '文档',
       discord: 'Discord',
+      priceTag: '五折',
     },
     faq: {
       title: '常见问题',
@@ -865,6 +882,12 @@ const translations = {
       storageLimited: '存储空间已满',
       storagePartialLimited: '存储空间不足，仅能保存 {{count}} 个资源',
       upgrade: '升级订阅',
+      fromExtension: '插件剪存',
+      extensionTitle: '一键保存网页内容',
+      extensionDescription: '安装我们的 Chrome 插件，轻松保存网页内容到画布中。',
+      downloadExtension: '下载插件',
+      viewDocs: '查看文档',
+      recommendedPlatforms: '推荐平台',
     },
     wait_parse: '内容解析中',
     parse_failed: '解析失败，点击重试',
@@ -950,6 +973,7 @@ const translations = {
     },
     siderMenu: {
       contactUs: '联系我们',
+      addToChrome: '添加到 Chrome',
       canvasTitle: '画布',
       canvasDescription:
         '创建、编辑和查看画布, 不同于传统的 Chatbot 应用，Refly 通过无限延伸的二维画布来完成对话思考、内容消费和创作的全流程。',

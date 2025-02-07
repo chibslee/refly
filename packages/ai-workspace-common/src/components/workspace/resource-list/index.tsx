@@ -110,7 +110,7 @@ const ActionDropdown = ({
           cancelText={t('common.cancel')}
           overlayStyle={{ maxWidth: '300px' }}
         >
-          <div className="flex items-center text-red-600">
+          <div className="flex items-center text-red-600" onClick={(e) => e.stopPropagation()}>
             <IconDelete size={16} className="mr-2" />
             {t('workspace.deleteDropdownMenu.delete')}
           </div>
@@ -133,7 +133,13 @@ const ActionDropdown = ({
       onOpenChange={handleOpenChange}
       menu={{ items }}
     >
-      <Button type="text" icon={<IconMoreHorizontal />} onClick={(e) => e.stopPropagation()} />
+      <Button
+        type="text"
+        icon={<IconMoreHorizontal />}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      />
     </Dropdown>
   );
 };
@@ -143,8 +149,13 @@ const ResourceCard = ({ item, onDelete }: { item: Resource; onDelete: () => void
   const language = i18n.languages?.[0];
   const [showFallbackIcon, setShowFallbackIcon] = useState(false);
 
-  const handleCardClick = () => {
-    if (item.data?.url) {
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Only open URL if click target is the card itself or its direct children
+    // (excluding the dropdown menu and its children)
+    const target = e.target as HTMLElement;
+    const isMenuClick = target.closest('.ant-dropdown') || target.closest('.ant-btn');
+
+    if (!isMenuClick && item.data?.url) {
       window.open(item.data.url, '_blank');
     }
   };

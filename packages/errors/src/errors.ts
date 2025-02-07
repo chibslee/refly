@@ -8,6 +8,22 @@ export class UnknownError extends BaseError {
   };
 }
 
+export class ContentTooLargeError extends BaseError {
+  code = 'E2004';
+  messageDict = {
+    en: 'Content is too large. Maximum length is 100k characters.',
+    'zh-CN': '内容过长。最大长度为 10 万字符。',
+  };
+}
+
+export class PayloadTooLargeError extends BaseError {
+  code = 'E2005';
+  messageDict = {
+    en: 'Request payload is too large. Maximum size is 100KB.',
+    'zh-CN': '请求数据过大。最大大小为 100KB。',
+  };
+}
+
 export class ConnectionError extends BaseError {
   code = 'E0001';
   messageDict = {
@@ -218,6 +234,8 @@ const errorMap = {
   E2001: StorageQuotaExceeded,
   E2002: ModelUsageQuotaExceeded,
   E2003: ModelNotSupportedError,
+  E2004: ContentTooLargeError,
+  E2005: PayloadTooLargeError,
 };
 
 export function getErrorMessage(code: string, locale: string): string {

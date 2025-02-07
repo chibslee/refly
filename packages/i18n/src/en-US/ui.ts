@@ -112,8 +112,9 @@ const translations = {
         'Powered by multi-threaded dialogue, knowledge integration, context memory, and intelligent search, ',
       second: 'Refly is the best way to transform ideas into quality content.',
     },
-    messageText: 'New DeepSeek R1 inference model released! ⚡️ ',
+    messageText: 'Refly Chrome Extension web clipper launched! ⚡️! ',
     tryForFree: 'Get Started',
+    addToChrome: 'Add to Chrome',
     contactUs: 'Contact Us',
     watchVideo: 'Watch Video',
     joinBtn: 'Join for free',
@@ -162,6 +163,16 @@ const translations = {
           'AI editing assistant for quality professional output',
         ],
       },
+      featureFive: {
+        tag: 'Clip & Save',
+        title: 'One-click content saving from any webpage to build your second brain',
+        bulletPoints: [
+          'One-click save content from any webpage (Twitter, Notion, etc.)',
+          'Support private webpage content saving and organization',
+          'Continuously build your personal knowledge base',
+          'Seamlessly integrate with your second brain',
+        ],
+      },
     },
     pricing: {
       title: 'Plans and Pricing',
@@ -206,6 +217,11 @@ const translations = {
         title: 'Contact Us',
         community: 'Community',
         mail: 'Email',
+      },
+      platforms: {
+        title: 'Platforms',
+        chrome: 'Chrome Extension',
+        web: 'Web App',
       },
     },
     loginFailed: {
@@ -252,6 +268,7 @@ const translations = {
       price: 'Pricing',
       docs: 'Docs',
       discord: 'Discord',
+      priceTag: '-50%',
     },
     faq: {
       title: 'Frequently Asked Questions',
@@ -880,6 +897,13 @@ const translations = {
       storageLimited: 'Storage quota exceeded',
       storagePartialLimited: 'Insufficient storage: only {{count}} files can be saved',
       upgrade: 'Upgrade Now',
+      fromExtension: 'Web Clipper',
+      extensionTitle: 'Save Web Content with One Click',
+      extensionDescription:
+        'Install our Chrome extension to easily save web content to your canvas.',
+      downloadExtension: 'Download Extension',
+      viewDocs: 'View Documentation',
+      recommendedPlatforms: 'Recommended Platforms',
     },
     wait_parse: 'Parsing',
     parse_failed: 'Parse Failed, click to retry',
@@ -960,6 +984,7 @@ const translations = {
     },
     siderMenu: {
       contactUs: 'Contact Us',
+      addToChrome: 'Add to Chrome',
       canvasTitle: 'Canvas',
       canvasDescription:
         'Create, edit, and view canvas, unlike traditional Chatbot applications, Refly completes the entire process of dialogue thinking, content consumption, and creation through an infinite two-dimensional canvas.',
